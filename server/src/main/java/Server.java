@@ -72,7 +72,8 @@ public class Server{
 				for(int i = 0; i < clients.size(); i++) {
 					ClientThread t = clients.get(i);
 					try {
-					 t.out.writeObject(message);
+//					 t.out.writeObject(message);
+						System.out.println("Message");
 					}
 					catch(Exception e) {}
 				}
