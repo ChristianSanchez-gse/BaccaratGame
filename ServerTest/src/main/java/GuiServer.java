@@ -29,7 +29,6 @@ public class GuiServer extends Application{
 	Scene startScene;
 	BorderPane startPane;
 	Server serverConnection;
-	Client clientConnection;
 	
 	ListView<String> listItems, listItems2;
 	
@@ -64,15 +63,7 @@ public class GuiServer extends Application{
 		this.clientChoice.setStyle("-fx-pref-width: 300px");
 		this.clientChoice.setStyle("-fx-pref-height: 300px");
 		
-		this.clientChoice.setOnAction(e-> {primaryStage.setScene(sceneMap.get("client"));
-											primaryStage.setTitle("This is a client");
-											clientConnection = new Client(data->{
-							Platform.runLater(()->{listItems2.getItems().add(data.toString());
-											});
-							});
-							
-											clientConnection.start();
-		});
+
 		
 		this.buttonBox = new HBox(400, serverChoice, clientChoice);
 		startPane = new BorderPane();
@@ -86,7 +77,7 @@ public class GuiServer extends Application{
 		
 		c1 = new TextField();
 		b1 = new Button("Send");
-		b1.setOnAction(e->{clientConnection.send(c1.getText()); c1.clear();});
+
 		
 		sceneMap = new HashMap<String, Scene>();
 		
