@@ -18,12 +18,12 @@ public class serverGui extends Application
     public void start(Stage primaryStage) throws Exception
     {
         try {
-        	primaryStage.setMaximized(true);
+        	//primaryStage.setMaximized(true);
             // Read file fxml and draw interface.
             Parent root = FXMLLoader.load(getClass().getResource("myGui.fxml"));
 
             primaryStage.setTitle("Andrew Mina Homework 5");
-         Scene s1 = new Scene(root, 500,500);
+         Scene s1 = new Scene(root, 840,545);
          //s1.getStylesheets().add("/styles/style1.css");
             primaryStage.setScene(s1);
             primaryStage.show();
