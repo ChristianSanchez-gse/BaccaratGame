@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-public class GuiServer extends Application{
+public class GuiClient extends Application{
 
 	
 	TextField s1,s2,s3,s4, c1;
