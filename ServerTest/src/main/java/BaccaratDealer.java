@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BaccaratDealer {
 	ArrayList<Card> deck;
 	public void generateDeck() {
 		for (int i=0; i < 4; i++) {
-			for(int j = 0; j < 13; j++) {
+			for(int j = 1; j < 14; j++) {
 				if(i == 0) {
 					deck.add(new Card("Diamond", j));
 				} else if (i == 1) {
@@ -18,7 +19,7 @@ public class BaccaratDealer {
 			}
 		}
 		for (Card x: deck) {
-			if( x.getValue() == 9 || x.getValue() == 10 || x.getValue() == 11|| x.getValue() == 12) {
+			if( x.getValue() == 10 || x.getValue() == 11 || x.getValue() == 12 || x.getValue() == 13) {
 				x.setValue(0);
 			}
 		}
@@ -26,15 +27,28 @@ public class BaccaratDealer {
 	}
 	
 	public ArrayList<Card> dealHand() {
-		return null;
+		ArrayList<Card> twoHand = new ArrayList<Card>();
+		
+		Card one = deck.get(0);
+		deck.remove(0);
+		Card two = deck.get(1);
+		deck.remove(1);
+		
+		twoHand.add(one);
+		twoHand.add(two);
+		return twoHand;
+		
 	}
 	public Card drawOne() {
-		return null;
+		Card one = deck.get(0);
+		deck.remove(0);
+		return one;
 	}
 	public void shuffleDeck() {
+		Collections.shuffle(deck);
 	}
 	public int deckSize() {
-		return 0;
+		return deck.size();
 	}
 
 }
