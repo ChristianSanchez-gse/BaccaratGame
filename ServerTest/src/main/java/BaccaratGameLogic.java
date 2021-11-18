@@ -7,6 +7,7 @@ and evaluatePlayerDraw will return true if either one should be dealt a third ca
 otherwise return false.
 */
 public class BaccaratGameLogic {
+	// tells you who won given two arrays of cards.
 	public static String whoWon(ArrayList<Card> hand1, ArrayList<Card>hand2) {
 		int val1= 0;
 		int val2 = 0;
@@ -54,6 +55,7 @@ public class BaccaratGameLogic {
 		}
 		return val;
 	}
+	// Tells you if they get a third card
 	public static boolean evaluateBankerDraw(ArrayList<Card> hand, Card playerCard) {
 		int first2 = hand.get(0).getValue() + hand.get(1).getValue();
 		
@@ -85,6 +87,7 @@ public class BaccaratGameLogic {
 		
 		
 	}
+	// tells you if they get a third card or not
 	public static boolean evaluatePlayerDraw(ArrayList<Card> hand) {
 		int total = hand.get(0).getValue() + hand.get(1).getValue();
 		if (total <= 5) {
