@@ -11,10 +11,8 @@ public class BaccaratGameLogic {
 	public static String whoWon(ArrayList<Card> hand1, ArrayList<Card>hand2) {
 		int val1= 0;
 		int val2 = 0;
-		
 		val1 = handTotal(hand1);
 		val2 = handTotal(hand2);
-		evaluateBanker
 		if (val1 > val2) {
 			return "Player";
 		} else if (val1 < val2) {

@@ -30,8 +30,6 @@ public class BaccaratGame {
 		if (BaccaratGameLogic.evaluatePlayerDraw(playerHand) == true) {
 			BaccaratGameLogic.evaluateBankerDraw(bankerHand, dealer.drawOne());
 		}
-			
-		
 		winner = BaccaratGameLogic.whoWon(bankerHand, playerHand);
 		
 	}
