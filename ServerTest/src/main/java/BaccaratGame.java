@@ -11,6 +11,8 @@ public class BaccaratGame {
 	private BaccaratDealer theDealer;
 	private double totalWinnings;
 	private BaccaratDealer dealer;
+	private String winner;
+	
 	
 	
 	// getting the starting values passed so we can play the game.
@@ -22,8 +24,11 @@ public class BaccaratGame {
 	}
 	
 	
-	public double evaluateWinnings() {
-		return 0;
+	public void evaluateWinnings() {
+		ArrayList<Card> bankerHand = dealer.dealHand();
+		ArrayList<Card> playerHand = dealer.dealHand();
+		winner = BaccaratGameLogic.whoWon(bankerHand, playerHand);
+		
 	}
 	
 	

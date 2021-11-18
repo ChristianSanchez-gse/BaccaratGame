@@ -55,6 +55,7 @@ public class BaccaratGameLogic {
 		}
 		return val;
 	}
+	
 	// Tells you if they get a third card
 	public static boolean evaluateBankerDraw(ArrayList<Card> hand, Card playerCard) {
 		int first2 = hand.get(0).getValue() + hand.get(1).getValue();
