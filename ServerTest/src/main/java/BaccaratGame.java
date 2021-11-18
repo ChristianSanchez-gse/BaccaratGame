@@ -25,17 +25,24 @@ public class BaccaratGame {
 	
 	
 	public void evaluateWinnings() {
-		ArrayList<Card> playerHand = dealer.dealHand();
-		ArrayList<Card> bankerHand = dealer.dealHand();
+		dealer = new BaccaratDealer();
+		dealer.generateDeck();
+		dealer.shuffleDeck();
+		
+		Card cardPointer = new Card("", -1);
+		
+		playerHand = dealer.dealHand();
+		bankerHand = dealer.dealHand();
 		if (BaccaratGameLogic.evaluatePlayerDraw(playerHand) == true) {
-			playerHand.add(dealer.drawOne());
+			cardPointer = dealer.drawOne();
+			playerHand.add(cardPointer);
 		} 
 		
-		if (BaccaratGameLogic.evaluateBankerDraw(bankerHand, playerHand.get(playerHand.size()))) {
-			
+		if (BaccaratGameLogic.evaluateBankerDraw(bankerHand, cardPointer)) {
+			bankerHand.add(dealer.drawOne());
 		}
 		
-		winner = BaccaratGameLogic.whoWon(bankerHand, playerHand);
+		winner = BaccaratGameLogic.whoWon(playerHand, bankerHand);
 		
 	}
 	

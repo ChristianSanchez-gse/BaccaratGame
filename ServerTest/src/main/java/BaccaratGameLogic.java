@@ -21,13 +21,7 @@ public class BaccaratGameLogic {
 			return "Draw";
 		}
 		
-//		if ((val1 == 8 || val1 == 9) && (val2 == 8 || val2 == 9)) {
-//			return "Draw";
-//		} else if (val1 == 8 || val1 == 9) {
-//			return "Player";
-//		} else if(val2 == 8 || val2 == 9){
-//			return "Dealer";
-//		}
+
 		
 	}
 	// value of the 2 cards added together
@@ -68,9 +62,11 @@ public class BaccaratGameLogic {
 				return true;
 			}
 			return false;
-		}  else{
+		}  else if (first2 == 0 || first2 == 1 || first2 == 2){
 			return true;
-		} 
+		} else {
+			return false;
+		}
 		
 		
 	}
