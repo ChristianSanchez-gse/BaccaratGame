@@ -85,8 +85,8 @@
                                  <children>
                                     <HBox alignment="TOP_CENTER" prefHeight="32.0" prefWidth="309.0" spacing="20.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="On" />
-                                          <Button mnemonicParsing="false" text="Off" />
+                                          <Button id="onButton" mnemonicParsing="false" text="On" />
+                                          <Button id="offButton" mnemonicParsing="false" text="Off" />
                                        </children>
                                        <opaqueInsets>
                                           <Insets />
@@ -97,8 +97,8 @@
                                     </HBox>
                                     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                        <children>
-                                          <TextField />
-                                          <Button mnemonicParsing="false" text="Enter" />
+                                          <TextField id="portNumber" />
+                                          <Button id="enterButton" mnemonicParsing="false" onAction="#switchScene" text="Enter" />
                                        </children>
                                     </VBox>
                                  </children>
