@@ -43,6 +43,7 @@ public class BaccaratGameLogic {
 //		}
 		
 	}
+	// value of the 2 cards added together
 	public static int handTotal(ArrayList<Card> hand) {
 		int val = 0;
 		for (int i = 0; i < hand.size(); i++) {
