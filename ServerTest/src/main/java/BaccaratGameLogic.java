@@ -12,21 +12,9 @@ public class BaccaratGameLogic {
 		int val1= 0;
 		int val2 = 0;
 		
-		for (int i = 0; i < hand1.size(); i++) {
-			val1 += hand1.get(i).getValue();
-			if (val1 > 9) {
-				val1 = val1 - 10;
-			}
-		}
-		
-		
-		for (int i = 0; i < hand2.size(); i++) {
-			val2 += hand2.get(i).getValue();
-			if (val2 > 9) {
-				val2 = val2 - 10;
-			}
-		}
-		
+		val1 = handTotal(hand1);
+		val2 = handTotal(hand2);
+		evaluateBanker
 		if (val1 > val2) {
 			return "Player";
 		} else if (val1 < val2) {
