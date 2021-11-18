@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.net.Socket;
 import java.util.function.Consumer;
 
+import javafx.scene.control.TextField;
+
 
 
 public class Client extends Thread{
@@ -14,18 +16,24 @@ public class Client extends Thread{
 	
 	ObjectOutputStream out;
 	ObjectInputStream in;
+	int port;
+	String ip;
 	
 	private Consumer<Serializable> callback;
 	
-	Client(Consumer<Serializable> call){
+	Client(Consumer<Serializable> call, int portNumber, String ipText){
 	
 		callback = call;
+		port = portNumber;
+		ip = ipText;
 	}
 	
 	public void run() {
 		
 		try {
-		socketClient= new Socket("127.0.0.1",5555);
+		System.out.println("Starting the client at port: " + port);
+		System.out.println("On address: " + ip);
+		socketClient= new Socket(ip,port); // "127.0.0.1" and 5555 are the original
 	    out = new ObjectOutputStream(socketClient.getOutputStream());
 	    in = new ObjectInputStream(socketClient.getInputStream());
 	    socketClient.setTcpNoDelay(true);

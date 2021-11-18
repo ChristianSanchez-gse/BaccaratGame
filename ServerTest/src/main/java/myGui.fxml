@@ -97,8 +97,8 @@
                                     </HBox>
                                     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                        <children>
-                                          <TextField id="portNumber" />
-                                          <Button id="enterButton" mnemonicParsing="false" onAction="#switchScene" text="Enter" />
+                                          <TextField fx:id="portNumber" text="someText" />
+                                          <Button fx:id="enterButton" mnemonicParsing="false" onAction="#switchScene" text="Enter" />
                                        </children>
                                     </VBox>
                                  </children>

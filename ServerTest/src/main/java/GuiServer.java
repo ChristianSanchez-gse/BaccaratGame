@@ -25,7 +25,7 @@ public class GuiServer extends Application{
 	
 	Scene infoScene;
 	Scene setupScene;
-	Server serverConnection;
+	
 	
 	ListView<String> listItems, listItems2;
 	
@@ -66,34 +66,5 @@ public class GuiServer extends Application{
 		
 	}
 	
-	public Scene createSetup() {
-		
-		BorderPane pane = new BorderPane();
-		pane.setPadding(new Insets(70));
-		pane.setStyle("-fx-background-color: coral");
-		
-		pane.setCenter(listItems);
 	
-		return new Scene(pane, 500, 400);
-		
-		
-	}
-	
-	public Scene createInfo() {
-		
-		
-		try {
-			
-			Parent root2 = FXMLLoader.load(getClass().getResource("myGui2.fxml"));
-			infoScene = new Scene(root2, 840, 545);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.exit(1);
-		}
-		
-		return infoScene;
-		
-	}
-
 }
