@@ -4,13 +4,30 @@ public class BaccaratGame {
 	ArrayList<Card> playerHand;
 	ArrayList<Card> bankerHand;
 	BaccaratDealer theDealer;
-	double currentBet;
-	double totalWinnings;
-	/*
-	This method will determine if the user won or lost their bet and return the amount won or
-			lost based on the value in currentBet.
-			*/
+	public double currentBet;
+	public double totalWinnings;
+	
+	theDealer = new BaccaratDealer();
+	theDealer.generateDeck();
+	theDealer.shuffleDeck();
+	
+	playerHand = theDealer.dealHand();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public double evaluateWinnings() {
 		return 0;
 	}
+	
+
 }
