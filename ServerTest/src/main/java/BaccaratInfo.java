@@ -24,7 +24,7 @@ public class BaccaratInfo implements Serializable{
 	}
 	
 	public void setbankerBid(double val) {
-		this.tieBid = val;
+		this.bankerBid = val;
 	}
 	
 	public void settieBid(double val) {
