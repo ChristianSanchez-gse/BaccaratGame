@@ -2,14 +2,15 @@ import java.util.ArrayList;
 
 public class BaccaratGame {
 	// What gets passed in
-	private double bet;
-	private String choice;
+	public double tieBid;
+	public double playerBid;
+	public double bankerBid;
 	
 	// What we return
 	private ArrayList<Card> playerHand;
 	private ArrayList<Card> bankerHand;
-	private BaccaratDealer theDealer;
 	private double totalWinnings;
+	public double currentStanding;
 	private BaccaratDealer dealer;
 	private String winner;
 	
@@ -17,14 +18,17 @@ public class BaccaratGame {
 	
 	// getting the starting values passed so we can play the game.
 	// Creating a new dealer object in order to get the randomized cards.
-	BaccaratGame(double bet, String choice){
-		this.bet = bet;
-		this.choice = choice;
+	BaccaratGame(double tieBid, double playerBid, double bankerBid, double currentStanding){
+		this.tieBid = tieBid;
+		this.playerBid = playerBid;
+		this.bankerBid = bankerBid;
+		this.currentStanding = currentStanding;
 		dealer = new BaccaratDealer();
 	}
 	
 	
-	public void evaluateWinnings() {
+	public double evaluateWinnings() {
+		double totalBid = tieBid + playerBid + bankerBid;  // total bid
 		dealer = new BaccaratDealer();
 		dealer.generateDeck();
 		dealer.shuffleDeck();
@@ -43,7 +47,16 @@ public class BaccaratGame {
 		}
 		
 		winner = BaccaratGameLogic.whoWon(playerHand, bankerHand);
+		if (winner == "Player") {
+			totalWinnings = playerBid * 2;
+		} else if (winner == "Banker") {
+			totalWinnings = bankerBid * 2;
+		} else if (winner == "Draw") {
+			totalWinnings = tieBid * 8;
+		}
 		
+		currentStanding = currentStanding - totalBid + totalWinnings;
+		return totalWinnings;
 	}
 	
 	
