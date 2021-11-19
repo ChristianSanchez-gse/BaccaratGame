@@ -16,7 +16,7 @@ public class BaccaratGameLogic {
 		if (val1 > val2) {
 			return "Player";
 		} else if (val1 < val2) {
-			return "Dealer";
+			return "Banker";
 		} else{
 			return "Draw";
 		}
