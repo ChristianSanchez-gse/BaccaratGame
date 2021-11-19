@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class BaccaratGame {
+	private BaccaratDealer dealer;
 	// What gets passed in
 	public double tieBid;
 	public double playerBid;
@@ -9,25 +10,24 @@ public class BaccaratGame {
 	// What we return
 	private ArrayList<Card> playerHand;
 	private ArrayList<Card> bankerHand;
-	private double totalWinnings;
-	public double currentStanding;
-	private BaccaratDealer dealer;
+	private double roundPayout;
+	public double walletTotal;
 	private String winner;
 	
 	
 	
 	// getting the starting values passed so we can play the game.
 	// Creating a new dealer object in order to get the randomized cards.
-	BaccaratGame(double tieBid, double playerBid, double bankerBid, double currentStanding){
+	BaccaratGame(double tieBid, double playerBid, double bankerBid, double walletTotal){
 		this.tieBid = tieBid;
 		this.playerBid = playerBid;
 		this.bankerBid = bankerBid;
-		this.currentStanding = currentStanding;
+		this.walletTotal = walletTotal;
 		dealer = new BaccaratDealer();
 	}
 	
 	
-	public double evaluateWinnings() {
+	public void evaluateWinnings() {
 		double totalBid = tieBid + playerBid + bankerBid;  // total bid
 		dealer = new BaccaratDealer();
 		dealer.generateDeck();
@@ -48,17 +48,33 @@ public class BaccaratGame {
 		
 		winner = BaccaratGameLogic.whoWon(playerHand, bankerHand);
 		if (winner == "Player") {
-			totalWinnings = playerBid * 2;
+			roundPayout = playerBid * 2;
 		} else if (winner == "Banker") {
-			totalWinnings = bankerBid * 2;
+			roundPayout = bankerBid * 2;
 		} else if (winner == "Draw") {
-			totalWinnings = tieBid * 8;
+			roundPayout = tieBid * 8;
 		}
 		
-		currentStanding = currentStanding - totalBid + totalWinnings;
-		return totalWinnings;
+		roundPayout = roundPayout - totalBid;
+		walletTotal = walletTotal - totalBid + roundPayout;
 	}
 	
+	public double getRoundPayout() {
+		return this.roundPayout;
+	}
 	
+	public String getWinner() {
+		return this.winner;
+	}
+	public ArrayList<Card> playerHand(){
+		return this.playerHand;
+	}
+	public ArrayList<Card> bankerHand(){
+		return this.bankerHand;
+	}
+	
+	public double getWalletTotal() {
+		return this.walletTotal;
+	}
 
 }
