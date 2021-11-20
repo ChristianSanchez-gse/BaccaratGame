@@ -51,7 +51,7 @@ public class Client extends Thread{
 	
     }
 	
-	public void send(String data) {
+	public void send(BaccaratInfo data) {
 		
 		try {
 			out.writeObject(data);
