@@ -13,16 +13,19 @@ public class BaccaratGame {
 	private double roundPayout;
 	public double walletTotal;
 	private String winner;
+	private BaccaratInfo theInfo;
+
 	
 	
 	
 	// getting the starting values passed so we can play the game.
 	// Creating a new dealer object in order to get the randomized cards.
-	BaccaratGame(double tieBid, double playerBid, double bankerBid, double walletTotal){
+	BaccaratGame(double tieBid, double playerBid, double bankerBid, double walletTotal, String name){
 		this.tieBid = tieBid;
 		this.playerBid = playerBid;
 		this.bankerBid = bankerBid;
 		this.walletTotal = walletTotal;
+		theInfo = new BaccaratInfo(playerBid, bankerBid, tieBid, name);
 		dealer = new BaccaratDealer();
 	}
 	
@@ -75,6 +78,10 @@ public class BaccaratGame {
 	
 	public double getWalletTotal() {
 		return this.walletTotal;
+	}
+	
+	public BaccaratInfo getInfo() {
+		return this.theInfo;
 	}
 
 }
