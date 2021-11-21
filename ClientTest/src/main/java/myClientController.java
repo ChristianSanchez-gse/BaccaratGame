@@ -21,8 +21,7 @@ public class myClientController {
 			int portNumber = Integer.parseInt(portText.getText());
 			String ip = ipText.getText();
 			clientConnection = new Client(data->{
-			Platform.runLater(()->{
-				});
+			Platform.runLater(()->{});
 			}, portNumber, ip);
 			clientConnection.start();
 	}

@@ -22,8 +22,8 @@ public class Client extends Thread{
 	private Consumer<Serializable> callback;
 	
 	Client(Consumer<Serializable> call, int portNumber, String ipText){
-	
-		callback = call;
+		//Consumer<String> a = new Consumer<String>();
+ 		callback = call;
 		port = portNumber;
 		ip = ipText;
 	}

@@ -11,8 +11,9 @@ public class BaccaratInfo implements Serializable{
 	private double bankerBid = 0;
 	private double tieBid = 0;
 	private double totalBid = 0;
+	private String name;
 	
-	BaccaratInfo(double pbid, double bbid,  double tbid) {
+	BaccaratInfo(double pbid, double bbid,  double tbid, String name) {
 		this.playerBid = pbid;
 		this.bankerBid = bbid;
 		this.tieBid = tbid;
@@ -52,6 +53,14 @@ public class BaccaratInfo implements Serializable{
 		this.bankerBid = 0;
 		this.tieBid = 0;
 		this.totalBid = 0;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 	
 	
