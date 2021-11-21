@@ -25,20 +25,8 @@ public class myClientController {
 	private Parent newRoot;
 	
 	public void startClient(ActionEvent event) throws IOException{
-<<<<<<< Updated upstream
-		System.out.println("Starting the client....");
-			int portNumber = Integer.parseInt(portText.getText());
-			String ip = ipText.getText();
-			clientConnection = new Client(data->{
-			Platform.runLater(()->{});
-			}, portNumber, ip);
-			clientConnection.start();
-=======
 
 			
-			
-			
-				
 				
 				System.out.println("It should switch the scene now");
 				newRoot = FXMLLoader.load(getClass().getResource("inGameGui.fxml"));
@@ -57,12 +45,6 @@ public class myClientController {
 					clientConnection.start();
 			
 			
-	}
-	public void sendTestObject(ActionEvent event) throws IOException {
-		  BaccaratInfo obj = new BaccaratInfo(50, 100, 200, "Chris");
-		  System.out.println("Sending the object now....");
-		  clientConnection.send(obj);
->>>>>>> Stashed changes
 	}
 
 }
