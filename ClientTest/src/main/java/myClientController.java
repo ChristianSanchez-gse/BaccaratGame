@@ -25,9 +25,6 @@ public class myClientController {
 	private Parent newRoot;
 	
 	public void startClient(ActionEvent event) throws IOException{
-
-			
-				
 				System.out.println("It should switch the scene now");
 				newRoot = FXMLLoader.load(getClass().getResource("inGameGui.fxml"));
 				 scene = new Scene(newRoot, 840,545);
@@ -43,8 +40,12 @@ public class myClientController {
 						});
 					}, portNumber, ip);
 					clientConnection.start();
-			
-			
+	}
+	
+	public void sendTestObject() {
+		BaccaratInfo obj = new BaccaratInfo(20,30,45, "chris");
+		System.out.println("sending to server now...");
+		clientConnection.send("yoyoyo");
 	}
 
 }

@@ -69,15 +69,15 @@ public class Server{
 				this.count = count;	
 			}
 			
-			public void updateClients(BaccaratInfo data) {
-				//for(int i = 0; i < clients.size(); i++) {
-					//ClientThread t = clients.get();
+			public void updateClients(String message) {
+				for(int i = 0; i < clients.size(); i++) {
+					ClientThread t = clients.get(i);
 					try {
-						System.out.println("message recieved my ni");
-					 //t.out.writeObject(message);
+					 System.out.println("message recieved my ni");
+					 t.out.writeObject(message);
 					}
 					catch(Exception e) {}
-				//}
+				}
 			}
 			
 			public void run(){
@@ -91,18 +91,19 @@ public class Server{
 					System.out.println("Streams not open");
 				}
 				System.out.println("New client has joined: client #" + count);
-				//updateClients("new client on server: client #"+count);
+				updateClients("new client on server: client #"+count);
 					
 				 while(true) {
 					    try {
-					    	Object data = in.readObject();
-					    	//callback.accept("client: " + count + " sent: " + data);
-					    	//updateClients("client #"+count+" said: "+data);
+					    	Object data =  in.readObject();
+					    	System.out.println("We recieved it in here first my ni");
+					    	callback.accept("client: " + count + " sent: " + data);
+					    	updateClients("client #"+count+" said: "+data);
 					    	
 					    	}
 					    catch(Exception e) {
 					    	callback.accept("OOOOPPs...Something wrong with the socket from client: " + count + "....closing down!");
-					    	//updateClients("Client #"+count+" has left the server!");
+					    	updateClients("Client #"+count+" has left the server!");
 					    	clients.remove(this);
 					    	break;
 					    }

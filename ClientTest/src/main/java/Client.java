@@ -43,20 +43,21 @@ public class Client extends Thread{
 		while(true) {
 			 
 			try {
-			String message = in.readObject().toString();
-			callback.accept(message);
+			//BaccaratInfo message = in.readObject();
+			//callback.accept(message);
 			}
 			catch(Exception e) {}
 		}
 	
     }
 	
-	public void send(BaccaratInfo data) {
+	public void send(String data) {
 		
 		try {
 			out.writeObject(data);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.out.println("yo this faild bruh");
 			e.printStackTrace();
 		}
 	}
