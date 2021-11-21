@@ -7,23 +7,18 @@ public class BaccaratInfo implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	// Betting stats that is sent from client
-	// to server
-	private double playerBid;
-	private double bankerBid;
-	private double tieBid;
-	private double totalBid;
-	//
+	private double playerBid = 0;
+	private double bankerBid = 0;
+	private double tieBid = 0;
+	private double totalBid = 0;
+	private String name;
 	
-	// Game stats that is sent from server to
-	// the client 
-	
-	
-	BaccaratInfo(double pbid, double bbid,  double tbid) {
+	BaccaratInfo(double pbid, double bbid,  double tbid, String name) {
 		this.playerBid = pbid;
 		this.bankerBid = bbid;
 		this.tieBid = tbid;
 		this.totalBid = pbid + bbid + tbid;
+		this.name = name;
 	}
 	
 	public void setplayerBid(double val) {
@@ -31,7 +26,7 @@ public class BaccaratInfo implements Serializable{
 	}
 	
 	public void setbankerBid(double val) {
-		this.tieBid = val;
+		this.bankerBid = val;
 	}
 	
 	public void settieBid(double val) {

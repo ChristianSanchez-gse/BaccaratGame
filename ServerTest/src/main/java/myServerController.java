@@ -51,7 +51,5 @@ public class myServerController {
 				}, port);
 	}
 
-	public void dummy(ActionEvent event) throws IOException {
-		  
-	}
+
 }
