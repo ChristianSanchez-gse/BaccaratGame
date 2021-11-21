@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class BaccaratInfo implements Serializable{
 
@@ -7,62 +8,74 @@ public class BaccaratInfo implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private double playerBid = 0;
-	private double bankerBid = 0;
-	private double tieBid = 0;
-	private double totalBid = 0;
+
+	// What gets passed in
+	public double theBid;
+	private String bidChoice;
 	private String name;
 	
-	BaccaratInfo(double pbid, double bbid,  double tbid, String name) {
-		this.playerBid = pbid;
-		this.bankerBid = bbid;
-		this.tieBid = tbid;
-		this.totalBid = pbid + bbid + tbid;
+	// What we return
+	private ArrayList<Integer> playerHand;
+	private ArrayList<Integer> bankerHand;
+	private double roundPayout;
+	public double walletTotal;
+	private String winner;
+	
+	BaccaratInfo(ArrayList<Integer> playerHand, ArrayList<Integer> bankerHand, double roundPayout, double walletTotal, String winner, String name) {
+		this.playerHand = playerHand;
+		this.bankerHand = bankerHand;
+		this.roundPayout = roundPayout;
+		this.walletTotal = walletTotal;
+		this.winner = winner;
 		this.name = name;
 	}
 	
-	public void setplayerBid(double val) {
-		this.playerBid = val;
+
+	
+	public ArrayList<Integer> getPlayerHand() {
+		return this.playerHand;
+	}
+	public void setPlayerHand(ArrayList<Integer> list) {
+		this.playerHand = list;
 	}
 	
-	public void setbankerBid(double val) {
-		this.bankerBid = val;
+	
+	public ArrayList<Integer> getBankerHand() {
+		return this.bankerHand;
+	}
+	public void setBankerHand(ArrayList<Integer> list) {
+		this.bankerHand = list;
 	}
 	
-	public void settieBid(double val) {
-		this.tieBid = val;
+	public double getRoundPayout() {
+		return this.roundPayout;
+	}
+	public void setRoundPayout(double val) {
+		this.roundPayout = val;
 	}
 	
-	public double getTotalBid() {
-		return this.totalBid;
+	public double getWalletTotal() {
+		return this.walletTotal;
+	}
+	public void setWalletTotal(double val) {
+		this.walletTotal = val;
 	}
 	
-	public double getplayerBid() {
-		return this.playerBid;
+	public String getWinner() {
+		return this.getWinner();
 	}
-	
-	public double getbankerBid() {
-		return this.bankerBid;
-	}
-	
-	public double gettieBid() {
-		return this.tieBid;
-	}
-	
-	public void resetBids() {
-		this.playerBid = 0;
-		this.bankerBid = 0;
-		this.tieBid = 0;
-		this.totalBid = 0;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
+	public void setWinner(String win) {
+		this.winner = win;
 	}
 	
 	public String getName() {
 		return this.name;
 	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 	
 	
 	

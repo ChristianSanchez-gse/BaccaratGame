@@ -3,9 +3,9 @@ import java.util.ArrayList;
 public class BaccaratGame {
 	private BaccaratDealer dealer;
 	// What gets passed in
-	public double tieBid;
-	public double playerBid;
-	public double bankerBid;
+	public double theBid;
+	private String bidChoice;
+	private String name;
 	
 	// What we return
 	private ArrayList<Card> playerHand;
@@ -14,24 +14,27 @@ public class BaccaratGame {
 	public double walletTotal;
 	private String winner;
 	private BaccaratInfo theInfo;
+	
+	//
+	ArrayList<Integer> phand, bhand;
+	
 
 	
 	
 	
 	// getting the starting values passed so we can play the game.
 	// Creating a new dealer object in order to get the randomized cards.
-	BaccaratGame(double tieBid, double playerBid, double bankerBid, double walletTotal, String name){
-		this.tieBid = tieBid;
-		this.playerBid = playerBid;
-		this.bankerBid = bankerBid;
+	BaccaratGame(double theBid,  String choice, double walletTotal, String name){
+		this.theBid = theBid;
+		this.bidChoice = choice;
 		this.walletTotal = walletTotal;
-		theInfo = new BaccaratInfo(playerBid, bankerBid, tieBid, name);
 		dealer = new BaccaratDealer();
+		theInfo = new BaccaratInfo(phand, bhand, roundPayout, walletTotal, winner, name);
 	}
 	
 	
 	public void evaluateWinnings() {
-		double totalBid = tieBid + playerBid + bankerBid;  // total bid
+		
 		dealer = new BaccaratDealer();
 		dealer.generateDeck();
 		dealer.shuffleDeck();
@@ -49,17 +52,37 @@ public class BaccaratGame {
 			bankerHand.add(dealer.drawOne());
 		}
 		
+		for (int i = 0; i < playerHand.size(); i++) {
+			phand.add(playerHand.get(i).getValue());
+		}
+		theInfo.setPlayerHand(phand);
+		
+		for (int i = 0; i < bankerHand.size(); i++) {
+			phand.add(bankerHand.get(i).getValue());
+		}
+		theInfo.setBankerHand(bhand);
+		
 		winner = BaccaratGameLogic.whoWon(playerHand, bankerHand);
-		if (winner == "Player") {
-			roundPayout = playerBid * 2;
-		} else if (winner == "Banker") {
-			roundPayout = bankerBid * 2;
-		} else if (winner == "Draw") {
-			roundPayout = tieBid * 8;
+		if (winner == "Player" && bidChoice == "Player") {
+			roundPayout = theBid;
+		} else if (winner == "Banker" && bidChoice == "Banker") {
+			roundPayout = theBid;
+		} else if (winner == "Draw" && bidChoice == "Draw") {
+			roundPayout = theBid * 8;
+		} else {
+			roundPayout = 0;
 		}
 		
-		roundPayout = roundPayout - totalBid;
-		walletTotal = walletTotal - totalBid + roundPayout;
+		roundPayout = roundPayout + theBid;
+		if (roundPayout == 0) {
+			walletTotal = walletTotal - theBid;
+		} else {
+			walletTotal = walletTotal + theBid;
+		}
+		theInfo.setRoundPayout(this.roundPayout);
+		theInfo.setWalletTotal(this.walletTotal);
+		theInfo.setWinner(this.winner);
+		
 	}
 	
 	public double getRoundPayout() {
@@ -83,5 +106,7 @@ public class BaccaratGame {
 	public BaccaratInfo getInfo() {
 		return this.theInfo;
 	}
+	
+	
 
 }
