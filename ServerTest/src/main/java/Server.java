@@ -19,23 +19,22 @@ public class Server{
 	ArrayList<ClientThread> clients = new ArrayList<ClientThread>();
 	TheServer server;
 	private Consumer<Serializable> callback;
-	private int port;
 	
-	Server(Consumer<Serializable> call, int port){
+	
+	Server(Consumer<Serializable> call){
 	
 		callback = call;
 		server = new TheServer();
 		server.start();
-		this.port = port;
 	}
 	
 	
 	public class TheServer extends Thread{
 		
 		public void run() {
-			System.out.println("The server has been started.");
-			try(ServerSocket mysocket = new ServerSocket(port);){
-		    System.out.println("Server is waiting for a client at port " + port);
+		
+			try(ServerSocket mysocket = new ServerSocket(5555);){
+		    System.out.println("Server is waiting for a client!");
 		  
 			
 		    while(true) {
@@ -73,7 +72,6 @@ public class Server{
 				for(int i = 0; i < clients.size(); i++) {
 					ClientThread t = clients.get(i);
 					try {
-					 System.out.println("message recieved my ni");
 					 t.out.writeObject(message);
 					}
 					catch(Exception e) {}
@@ -90,13 +88,12 @@ public class Server{
 				catch(Exception e) {
 					System.out.println("Streams not open");
 				}
-				System.out.println("New client has joined: client #" + count);
+				
 				updateClients("new client on server: client #"+count);
 					
 				 while(true) {
 					    try {
-					    	Object data =  in.readObject();
-					    	System.out.println("We recieved it in here first my ni");
+					    	String data = in.readObject().toString();
 					    	callback.accept("client: " + count + " sent: " + data);
 					    	updateClients("client #"+count+" said: "+data);
 					    	

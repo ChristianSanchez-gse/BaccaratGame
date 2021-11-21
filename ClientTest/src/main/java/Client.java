@@ -5,8 +5,6 @@ import java.io.Serializable;
 import java.net.Socket;
 import java.util.function.Consumer;
 
-import javafx.scene.control.TextField;
-
 
 
 public class Client extends Thread{
@@ -16,24 +14,18 @@ public class Client extends Thread{
 	
 	ObjectOutputStream out;
 	ObjectInputStream in;
-	int port;
-	String ip;
 	
 	private Consumer<Serializable> callback;
 	
-	Client(Consumer<Serializable> call, int portNumber, String ipText){
-		//Consumer<String> a = new Consumer<String>();
- 		callback = call;
-		port = portNumber;
-		ip = ipText;
+	Client(Consumer<Serializable> call){
+	
+		callback = call;
 	}
 	
 	public void run() {
 		
 		try {
-		System.out.println("Starting the client at port: " + port);
-		System.out.println("On address: " + ip);
-		socketClient= new Socket(ip,port); // "127.0.0.1" and 5555 are the original
+		socketClient= new Socket("127.0.0.1",5555);
 	    out = new ObjectOutputStream(socketClient.getOutputStream());
 	    in = new ObjectInputStream(socketClient.getInputStream());
 	    socketClient.setTcpNoDelay(true);
@@ -43,8 +35,8 @@ public class Client extends Thread{
 		while(true) {
 			 
 			try {
-			//BaccaratInfo message = in.readObject();
-			//callback.accept(message);
+			String message = in.readObject().toString();
+			callback.accept(message);
 			}
 			catch(Exception e) {}
 		}
@@ -57,7 +49,6 @@ public class Client extends Thread{
 			out.writeObject(data);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println("yo this faild bruh");
 			e.printStackTrace();
 		}
 	}

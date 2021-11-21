@@ -79,8 +79,8 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="ipText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="portText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="ipText" text="127.0.0.1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="portText" text="5555" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Button fx:id="EnterButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#startClient" text="Enter game" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets left="120.0" />

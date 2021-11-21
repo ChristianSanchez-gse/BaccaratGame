@@ -34,7 +34,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -75,7 +74,6 @@
                                           <Font size="13.0" />
                                        </font>
                                     </Text>
-                                    <Label text="name" />
                                  </children>
                                  <BorderPane.margin>
                                     <Insets top="20.0" />
@@ -99,9 +97,8 @@
                                     </HBox>
                                     <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                        <children>
-                                          <TextField fx:id="portNumber" />
+                                          <TextField fx:id="portNumber" text="5555" />
                                           <Button fx:id="enterButton" mnemonicParsing="false" onAction="#switchScene" text="Enter" />
-                                          <TextField />
                                        </children>
                                     </VBox>
                                  </children>

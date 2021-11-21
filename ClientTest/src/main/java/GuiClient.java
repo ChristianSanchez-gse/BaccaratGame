@@ -23,7 +23,7 @@ public class GuiClient extends Application{
 
 	
 	Scene startScene;
-	Client clientConnection;
+	static Client clientConnection;
 	
 	ListView<String> listItems, listItems2;
 	

@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,38 +18,46 @@ public class myServerController {
 	public TextField portNumber;
 	@FXML
 	public Button enterButton;
+	@FXML
+	private ListView<String> gameHistory;
+	@FXML
+	private Button toggleServer;
 	// Gui
 	private Stage stage;
 	private Scene scene;
 	private Parent newRoot;
-	Server serverConnection;
+	static Server serverConnection;
 	
 	public void displayTerminal() {
 		System.out.println("The button was clicked!");
 	}
 	
-	public void openPort() {
+	public void openPort(String portInput) {
 		System.out.println("You hit the submit button");
+		// Setting up the server
+		System.out.println(portInput);
+		int port = Integer.parseInt(portInput);
+		serverConnection = new Server(data -> {
+			Platform.runLater(()->{
+				System.out.println(data + " Was recieved");
+				
+			});
+		});
+		
+		
 	}
 	public void switchScene(ActionEvent event) throws IOException {
 		// setting up the gui
-		String text = portNumber.getText();
+		String portInput = portNumber.getText();
 		System.out.println("Switched to the second setup scene");
-		 newRoot = FXMLLoader.load(getClass().getResource("myGui2.fxml"));
-		 scene = new Scene(newRoot, 840,545);
-		 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		 stage.setScene(scene);
-		 stage.show();
+		openPort(portInput);
 		 
-		 
-		 // Setting up the server
-		 System.out.println(text);
-		 int port = Integer.parseInt(text);
-		 serverConnection = new Server(data -> {
-				Platform.runLater(()->{
-				// idk what goes here
-					});
-				}, port);
+		// opens the new fxml window
+		newRoot = FXMLLoader.load(getClass().getResource("secondScreen.fxml"));
+		scene = new Scene(newRoot, 840,545);
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage.setScene(scene);
+		stage.show();
 	}
 
 

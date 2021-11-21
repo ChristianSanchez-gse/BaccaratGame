@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,19 +19,16 @@ public class myClientController {
 	private TextField ipText;
 	@FXML
 	private TextField portText;
+
 	
-	public Client clientConnection;
+	private static Client clientConnection;
 	private Stage stage;
-	private Scene scene;
+	private Scene inGameScene;
 	private Parent newRoot;
 	
 	public void startClient(ActionEvent event) throws IOException{
 				System.out.println("It should switch the scene now");
-				newRoot = FXMLLoader.load(getClass().getResource("inGameGui.fxml"));
-				 scene = new Scene(newRoot, 840,545);
-				 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-				 stage.setScene(scene);
-				 stage.show();
+				
 				 
 				 System.out.println("Starting the client....");
 					int portNumber = Integer.parseInt(portText.getText());
@@ -38,14 +36,30 @@ public class myClientController {
 					clientConnection = new Client(data->{
 					Platform.runLater(()->{
 						});
-					}, portNumber, ip);
+					});
 					clientConnection.start();
+					
+					
+					
+					 newRoot = FXMLLoader.load(getClass().getResource("inGameGui.fxml"));
+					 inGameScene = new Scene(newRoot, 840,545);
+					 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+					 stage.setScene(inGameScene);
+					 stage.show();
 	}
 	
 	public void sendTestObject() {
-		BaccaratInfo obj = new BaccaratInfo(20,30,45, "chris");
+		//BaccaratInfo obj = new BaccaratInfo(20,30,45, "chris");
 		System.out.println("sending to server now...");
-		clientConnection.send("yoyoyo");
+		try{
+			if (clientConnection == null) {
+				System.out.println("This shi is null too");
+			}
+			clientConnection.send("yoyoyo");
+		} catch (Exception e){
+			System.out.println("There was a problem sending the info");
+			e.printStackTrace();
+		}
 	}
 
 }
