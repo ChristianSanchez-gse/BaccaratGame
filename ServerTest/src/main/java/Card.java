@@ -1,7 +1,7 @@
 
 public class Card {
-	String suite;
-	int value;
+	private String suite;
+	private int value;
 	Card(String Suite, int theValue) {
 		this.suite = Suite;
 		this.value = theValue;

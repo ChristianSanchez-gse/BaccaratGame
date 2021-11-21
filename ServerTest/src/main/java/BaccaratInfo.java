@@ -22,6 +22,8 @@ public class BaccaratInfo implements Serializable{
 	private String winner;
 	
 	BaccaratInfo(ArrayList<Integer> playerHand, ArrayList<Integer> bankerHand, double roundPayout, double walletTotal, String winner, String name) {
+		playerHand = new ArrayList<Integer>();
+		bankerHand = new ArrayList<Integer>();
 		this.playerHand = playerHand;
 		this.bankerHand = bankerHand;
 		this.roundPayout = roundPayout;

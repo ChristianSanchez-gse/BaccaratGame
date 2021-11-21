@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class BaccaratDealer {
+
 	private ArrayList<Card> deck;
 	
 	// Whenever a new object is created,
 	// generate and shuffle the deck of cards.
 	BaccaratDealer(){
-		generateDeck();
-		shuffleDeck();
-	}
-	public void generateDeck() {
+		
+		deck = new ArrayList<Card>();
+		
 		for (int i=0; i < 4; i++) {
 			for(int j = 1; j < 14; j++) {
 				if(i == 0) {
@@ -22,7 +22,6 @@ public class BaccaratDealer {
 				} else if (i == 3) {
 					deck.add(new Card("Club", j));
 				}
-				
 			}
 		}
 		for (Card x: deck) {
@@ -31,7 +30,9 @@ public class BaccaratDealer {
 			}
 		}
 		
+		shuffleDeck();
 	}
+
 	
 	public ArrayList<Card> dealHand() {
 		ArrayList<Card> twoHand = new ArrayList<Card>();
