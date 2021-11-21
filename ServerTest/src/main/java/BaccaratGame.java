@@ -72,11 +72,11 @@ public class BaccaratGame {
 			roundPayout = 0;
 		}
 		
-		roundPayout = roundPayout + theBid;
+		
 		if (roundPayout == 0) {
 			walletTotal = walletTotal - theBid;
 		} else {
-			walletTotal = walletTotal + theBid;
+			walletTotal = walletTotal + roundPayout;
 		}
 //		theInfo.setRoundPayout(this.roundPayout);
 //		theInfo.setWalletTotal(this.walletTotal);
