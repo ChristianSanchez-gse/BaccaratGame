@@ -18,6 +18,7 @@ public class BaccaratInfo implements Serializable{
 		this.bankerBid = bbid;
 		this.tieBid = tbid;
 		this.totalBid = pbid + bbid + tbid;
+		this.name = name;
 	}
 	
 	public void setplayerBid(double val) {
