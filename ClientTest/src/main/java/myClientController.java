@@ -19,6 +19,20 @@ public class myClientController {
 	private TextField ipText;
 	@FXML
 	private TextField portText;
+	@FXML
+	private TextField playerBidField;
+	@FXML
+	private TextField bankerBidField;
+	@FXML
+	private TextField tieBidField;
+	@FXML
+	private Button playerBidButton;
+	@FXML
+	private Button bankerBidButton;
+	@FXML
+	private Button tieBidButton;
+	@FXML
+	private Button newRound;
 
 	
 	private static Client clientConnection;
@@ -36,7 +50,7 @@ public class myClientController {
 					clientConnection = new Client(data->{
 					Platform.runLater(()->{
 						});
-					});
+					}, portNumber, ip);
 					clientConnection.start();
 					
 					
@@ -47,19 +61,59 @@ public class myClientController {
 					 stage.setScene(inGameScene);
 					 stage.show();
 	}
-	
-	public void sendTestObject() {
-		//BaccaratInfo obj = new BaccaratInfo(20,30,45, "chris");
-		System.out.println("sending to server now...");
-		try{
-			if (clientConnection == null) {
-				System.out.println("This shi is null too");
-			}
-			clientConnection.send("yoyoyo");
-		} catch (Exception e){
-			System.out.println("There was a problem sending the info");
-			e.printStackTrace();
-		}
+	public void sendPlayer(ActionEvent event) throws IOException{
+		
+		String bid = playerBidField.getText();
+		BaccaratInfo obj = new BaccaratInfo("Player", Integer.parseInt(bid));
+		bankerBidField.setDisable(true);
+		tieBidField.setDisable(true);
+		bankerBidButton.setDisable(true);
+		tieBidButton.setDisable(true);
+		clientConnection.send(obj);
 	}
+	public void sendBanker(ActionEvent event) throws IOException{
+		String bid = bankerBidField.getText();
+		BaccaratInfo obj = new BaccaratInfo("Banker", Integer.parseInt(bid));
+		playerBidField.setDisable(true);
+		tieBidField.setDisable(true);
+		playerBidButton.setDisable(true);
+		tieBidButton.setDisable(true);
+		clientConnection.send(obj);
+	}
+	public void sendTie(ActionEvent event) throws IOException{
+		String bid = tieBidField.getText();
+		BaccaratInfo obj = new BaccaratInfo("Tie", Integer.parseInt(bid));
+		bankerBidField.setDisable(true);
+		playerBidField.setDisable(true);
+		bankerBidButton.setDisable(true);
+		playerBidButton.setDisable(true);
+		clientConnection.send(obj);
+	}
+	
+	public void newRound(ActionEvent event) throws IOException{
+		bankerBidField.setDisable(false);
+		playerBidField.setDisable(false);
+		bankerBidButton.setDisable(false);
+		playerBidButton.setDisable(false);
+		tieBidButton.setDisable(false);
+		tieBidField.setDisable(false);
+		bankerBidField.setText(null);
+		playerBidField.setText(null);
+		tieBidField.setText(null);
+	}
+	
+//	public void sendTestObject() {
+//		//BaccaratInfo obj = new BaccaratInfo(20,30,45, "chris");
+//		System.out.println("sending to server now...");
+//		try{
+//			if (clientConnection == null) {
+//				System.out.println("This shi is null too");
+//			}
+//			clientConnection.send("yoyoyo");
+//		} catch (Exception e){
+//			System.out.println("There was a problem sending the info");
+//			e.printStackTrace();
+//		}
+//	}
 
 }

@@ -19,13 +19,14 @@ public class Server{
 	ArrayList<ClientThread> clients = new ArrayList<ClientThread>();
 	TheServer server;
 	private Consumer<Serializable> callback;
+	int port;
 	
-	
-	Server(Consumer<Serializable> call){
+	Server(Consumer<Serializable> call, int portInput){
 	
 		callback = call;
 		server = new TheServer();
 		server.start();
+		this.port = portInput;
 	}
 	
 	
@@ -93,8 +94,8 @@ public class Server{
 					
 				 while(true) {
 					    try {
-					    	String data = in.readObject().toString();
-					    	callback.accept("client: " + count + " sent: " + data);
+					    	BaccaratInfo data = (BaccaratInfo) in.readObject();
+					    	callback.accept("client: " + count + " sent: " + data.getBid());
 					    	updateClients("client #"+count+" said: "+data);
 					    	
 					    	}

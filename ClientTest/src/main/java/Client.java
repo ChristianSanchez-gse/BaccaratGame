@@ -14,18 +14,21 @@ public class Client extends Thread{
 	
 	ObjectOutputStream out;
 	ObjectInputStream in;
-	
+	private int port;
+	private String ip;
 	private Consumer<Serializable> callback;
 	
-	Client(Consumer<Serializable> call){
+	Client(Consumer<Serializable> call, int portNumber, String ip){
 	
 		callback = call;
+		this.port = portNumber;
+		this.ip = ip;
 	}
 	
 	public void run() {
 		
 		try {
-		socketClient= new Socket("127.0.0.1",5555);
+		socketClient= new Socket(ip,port);
 	    out = new ObjectOutputStream(socketClient.getOutputStream());
 	    in = new ObjectInputStream(socketClient.getInputStream());
 	    socketClient.setTcpNoDelay(true);
@@ -43,7 +46,7 @@ public class Client extends Thread{
 	
     }
 	
-	public void send(String data) {
+	public void send(BaccaratInfo data) {
 		
 		try {
 			out.writeObject(data);

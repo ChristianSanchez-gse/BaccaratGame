@@ -22,8 +22,6 @@ public class BaccaratInfo implements Serializable{
 	private String winner;
 	
 	BaccaratInfo(ArrayList<Integer> playerHand, ArrayList<Integer> bankerHand, double roundPayout, double walletTotal, String winner, String name) {
-		playerHand = new ArrayList<Integer>();
-		bankerHand = new ArrayList<Integer>();
 		this.playerHand = playerHand;
 		this.bankerHand = bankerHand;
 		this.roundPayout = roundPayout;
@@ -34,6 +32,14 @@ public class BaccaratInfo implements Serializable{
 	
 
 	
+	public BaccaratInfo(String choice, double bid) {
+		// TODO Auto-generated constructor stub
+		this.theBid = bid;
+		this.bidChoice = choice;
+	}
+
+
+
 	public ArrayList<Integer> getPlayerHand() {
 		return this.playerHand;
 	}
@@ -76,7 +82,9 @@ public class BaccaratInfo implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public double getBid() {
+		return this.theBid;
+	}
 	
 	
 	

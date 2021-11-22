@@ -32,6 +32,14 @@ public class BaccaratInfo implements Serializable{
 	
 
 	
+	public BaccaratInfo(String choice, double bid) {
+		// TODO Auto-generated constructor stub
+		this.theBid = bid;
+		this.bidChoice = choice;
+	}
+
+
+
 	public ArrayList<Integer> getPlayerHand() {
 		return this.playerHand;
 	}
@@ -74,7 +82,9 @@ public class BaccaratInfo implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public double getBid() {
+		return this.theBid;
+	}
 	
 	
 	

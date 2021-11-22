@@ -27,6 +27,7 @@ public class BaccaratGame {
 	BaccaratGame(double theBid,  String choice, double walletTotal, String name){
 //		this.playerHand = new ArrayList<Card>();
 //		this.bankerHand = new ArrayList<Card>();
+		
 		dealer = new BaccaratDealer();
 		this.phand = new ArrayList<Integer>();
 		this.bhand = new ArrayList<Integer>();
@@ -81,7 +82,8 @@ public class BaccaratGame {
 //		theInfo.setRoundPayout(this.roundPayout);
 //		theInfo.setWalletTotal(this.walletTotal);
 //		theInfo.setWinner(this.winner);
-		theInfo = new BaccaratInfo(phand, bhand, roundPayout, walletTotal, winner, name);
+		
+		//theInfo = new BaccaratInfo(phand, bhand, roundPayout, walletTotal, winner, name, bidChoice);
 	}
 	
 	

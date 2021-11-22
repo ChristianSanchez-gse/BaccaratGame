@@ -32,17 +32,19 @@ public class myServerController {
 		System.out.println("The button was clicked!");
 	}
 	
-	public void openPort(String portInput) {
+	public void openPort(int portInput) {
 		System.out.println("You hit the submit button");
 		// Setting up the server
 		System.out.println(portInput);
-		int port = Integer.parseInt(portInput);
+		
 		serverConnection = new Server(data -> {
 			Platform.runLater(()->{
-				System.out.println(data + " Was recieved");
-				
+				//System.out.println(data + " Was recieved");
+				System.out.println(data.toString());
+				//gameHistory.getItems().add("test");
+				//addToList(data.toString());
 			});
-		});
+		}, portInput);
 		
 		
 	}
@@ -50,7 +52,7 @@ public class myServerController {
 		// setting up the gui
 		String portInput = portNumber.getText();
 		System.out.println("Switched to the second setup scene");
-		openPort(portInput);
+		
 		 
 		// opens the new fxml window
 		newRoot = FXMLLoader.load(getClass().getResource("secondScreen.fxml"));
@@ -58,7 +60,18 @@ public class myServerController {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
+		openPort(Integer.parseInt(portInput));
+		
 	}
-
+	
+	public void addToList(String string){
+		System.out.println("We are about to print to the listview" + string);
+		if (string != null) {
+			gameHistory = new ListView<String>();
+			gameHistory.getItems().add(string);
+		} else {
+			
+		}
+	}
 
 }
