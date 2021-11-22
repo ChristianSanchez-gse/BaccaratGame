@@ -91,7 +91,7 @@ class MyTest {
 	@Test
 	void BaccaratRoundPayOutTest1a() {
 		//game1.evaluateWinnings();
-		if (game1.getRoundPayout() > 0 && game1.getWinner() != "Tie") {
+		if (game1.getRoundPayout() > 0 && game1.getWinner() != "Draw") {
 			assertEquals(5, game1.getRoundPayout(), "wrong value");
 		} else if(game1.getRoundPayout() == 0){
 			assertEquals(0, game1.getRoundPayout(), "wrong value");
@@ -103,9 +103,9 @@ class MyTest {
 	@Test
 	void BaccaratRoundPayOutTest1b() {
 		//game2.evaluateWinnings();
-		if (game2.getRoundPayout() > 0 && game2.getWinner() != "Tie") {
+		if (game2.getRoundPayout() > 0 && game2.getWinner() != "Draw" ) {
 			assertEquals(5, game2.getRoundPayout(), "wrong value");
-		} else if(game1.getRoundPayout() == 0){
+		} else if(game2.getRoundPayout() == 0){
 			assertEquals(0, game2.getRoundPayout(), "wrong value");
 		}else {
 			assertEquals(40, game2.getRoundPayout(), "wrong value");
@@ -147,6 +147,38 @@ class MyTest {
 			assertEquals("Player", game2.getWinner(), "wrong value");
 		}
 	}
+	
+	@Test
+	void BaccaratGameHandSize() {
+		if (game1.bankerHand().size() == 2) {
+			assertEquals(2, game1.bankerHand().size(), "wrong value");
+		}else {
+			assertEquals(3, game1.bankerHand().size(), "wrong value");
+		}
+		
+	}
+	
+	@Test
+	void BaccaratGameHandSize2() {
+		if (game1.bankerHandInt().size() < 3) {
+			assertEquals(2, game1.bankerHandInt().size(), "wrong value");
+		}else {
+			assertEquals(3, game1.bankerHandInt().size(), "wrong value");
+		}
+		
+	}
+	
+	@Test
+	void BaccaratGameHandSize3() {
+		if (game3.bankerHandInt().size() < 3) {
+			assertEquals(2, game1.bankerHandInt().size(), "wrong value");
+		}else {
+			assertEquals(3, game1.bankerHandInt().size(), "wrong value");
+		}
+		
+	}
+	
+	
 	
 	
 	

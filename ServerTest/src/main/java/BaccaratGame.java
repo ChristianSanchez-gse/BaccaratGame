@@ -55,11 +55,13 @@ public class BaccaratGame {
 		for (int i = 0; i < playerHand.size(); i++) {
 			phand.add(playerHand.get(i).getValue());
 		}
+		//System.out.println("Player hand size is " + phand.size());
 		//theInfo.setPlayerHand(phand);
 		
 		for (int i = 0; i < bankerHand.size(); i++) {
-			phand.add(bankerHand.get(i).getValue());
+			bhand.add(bankerHand.get(i).getValue());
 		}
+		//System.out.println("Banker hand size is " + bhand.size());
 		//theInfo.setBankerHand(bhand);
 		
 		winner = BaccaratGameLogic.whoWon(playerHand, bankerHand);
