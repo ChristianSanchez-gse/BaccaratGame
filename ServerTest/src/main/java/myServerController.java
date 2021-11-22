@@ -19,7 +19,7 @@ public class myServerController {
 	@FXML
 	public Button enterButton;
 	@FXML
-	private ListView<String> gameHistory;
+	private ListView<String> gameHistory = new ListView<String>();
 	@FXML
 	private Button toggleServer;
 	// Gui
@@ -36,12 +36,12 @@ public class myServerController {
 		System.out.println("You hit the submit button");
 		// Setting up the server
 		System.out.println(portInput);
-		
+		gameHistory =new ListView<String>();
 		serverConnection = new Server(data -> {
 			Platform.runLater(()->{
 				//System.out.println(data + " Was recieved");
 				System.out.println(data.toString());
-				//gameHistory.getItems().add("test");
+				gameHistory.getItems().add("test");
 				//addToList(data.toString());
 			});
 		}, portInput);
@@ -61,6 +61,7 @@ public class myServerController {
 		stage.setScene(scene);
 		stage.show();
 		openPort(Integer.parseInt(portInput));
+		
 		
 	}
 	
