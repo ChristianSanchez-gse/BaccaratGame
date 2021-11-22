@@ -164,6 +164,12 @@ public class BaccaratGame {
 		return this.bidChoice;
 	}
 	
+	public ArrayList<Integer> playerHandInt(){
+		return phand;
+	}
+	public ArrayList<Integer> bankerHandInt(){
+		return bhand;
+	}
 	
 
 }

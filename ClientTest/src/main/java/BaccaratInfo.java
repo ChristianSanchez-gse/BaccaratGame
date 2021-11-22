@@ -69,7 +69,7 @@ public class BaccaratInfo implements Serializable{
 	}
 	
 	public String getWinner() {
-		return this.getWinner();
+		return this.winner;
 	}
 	public void setWinner(String win) {
 		this.winner = win;

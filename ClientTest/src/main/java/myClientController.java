@@ -49,6 +49,7 @@ public class myClientController {
 					String ip = ipText.getText();
 					clientConnection = new Client(data->{
 					Platform.runLater(()->{
+						System.out.println(data);
 						});
 					}, portNumber, ip);
 					clientConnection.start();

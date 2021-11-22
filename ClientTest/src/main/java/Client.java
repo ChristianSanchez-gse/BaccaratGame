@@ -38,8 +38,9 @@ public class Client extends Thread{
 		while(true) {
 			 
 			try {
-			String message = in.readObject().toString();
-			callback.accept(message);
+			BaccaratInfo message = (BaccaratInfo) in.readObject();
+			callback.accept(message.getWinner());
+			callback.accept(message.getPlayerHand().size());
 			}
 			catch(Exception e) {}
 		}

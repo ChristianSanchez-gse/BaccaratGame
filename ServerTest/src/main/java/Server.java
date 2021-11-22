@@ -69,14 +69,15 @@ public class Server{
 				this.count = count;	
 			}
 			
-			public void updateClients(String message) {
-				for(int i = 0; i < clients.size(); i++) {
-					ClientThread t = clients.get(i);
+			public void updateClients(BaccaratInfo message) {
+				//for(int i = 0; i < clients.size(); i++) {
+					System.out.println("This is wehere it will break");
+					ClientThread t = clients.get(count);
 					try {
 					 t.out.writeObject(message);
 					}
 					catch(Exception e) {}
-				}
+				//}
 			}
 			
 			public void run(){
@@ -90,7 +91,7 @@ public class Server{
 					System.out.println("Streams not open");
 				}
 				
-				updateClients("new client on server: client #"+count);
+				//updateClients("new client on server: client #"+count);
 					
 				 while(true) {
 					    try {
@@ -98,12 +99,15 @@ public class Server{
 					    	BaccaratGame newGame = new BaccaratGame(data.getBid(), data.getChoice(), data.getWalletTotal());
 					    	String winner = newGame.getWinner();
 					    	callback.accept("client: " + count + " sent: " + data.getBid() + " for " + data.getChoice() + "......" + winner + " won!");
-					    	updateClients("client #"+count+" said: "+data);
+					    	
+					    	BaccaratInfo returnObj = new BaccaratInfo(newGame.playerHandInt(), newGame.playerHandInt(), newGame.getRoundPayout(), newGame.getWalletTotal(), newGame.getWinner() );
+					    	
+					    	out.writeObject(returnObj);
 					    	
 					    	}
 					    catch(Exception e) {
 					    	callback.accept("OOOOPPs...Something wrong with the socket from client: " + count + "....closing down!");
-					    	updateClients("Client #"+count+" has left the server!");
+					    	//updateClients("Client #"+count+" has left the server!");
 					    	clients.remove(this);
 					    	break;
 					    }
