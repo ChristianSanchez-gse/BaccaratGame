@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -33,6 +34,8 @@ public class myClientController {
 	private Button tieBidButton;
 	@FXML
 	private Button newRound;
+	@FXML
+	private Label title;
 
 	
 	private static Client clientConnection;
@@ -49,7 +52,8 @@ public class myClientController {
 					String ip = ipText.getText();
 					clientConnection = new Client(data->{
 					Platform.runLater(()->{
-						System.out.println(data);
+						//System.out.println(data);
+						title.setText(data.toString());
 						});
 					}, portNumber, ip);
 					clientConnection.start();

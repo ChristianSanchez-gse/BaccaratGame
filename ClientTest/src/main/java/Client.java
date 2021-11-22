@@ -40,7 +40,6 @@ public class Client extends Thread{
 			try {
 			BaccaratInfo message = (BaccaratInfo) in.readObject();
 			callback.accept(message.getWinner());
-			callback.accept(message.getPlayerHand().size());
 			}
 			catch(Exception e) {}
 		}

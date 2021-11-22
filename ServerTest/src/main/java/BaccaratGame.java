@@ -63,13 +63,18 @@ public class BaccaratGame {
 		//theInfo.setBankerHand(bhand);
 		
 		winner = BaccaratGameLogic.whoWon(playerHand, bankerHand);
-		if (winner == "Player" && bidChoice == "Player") {
+		System.out.println("The winner is supposed to be: " + winner + " And the choice is: " + bidChoice);
+		if(winner == choice) {
+			System.out.println("They are the same!");
+		}
+		if (winner.equals("Player") && bidChoice.equals("Player")) {
 			roundPayout = theBid;
-		} else if (winner == "Banker" && bidChoice == "Banker") {
+		} else if (winner.equals("Banker") && bidChoice.equals("Banker")) {
 			roundPayout = theBid;
-		} else if (winner == "Draw" && bidChoice == "Draw") {
+		} else if (winner.equals("Draw") && bidChoice.equals("Draw")) {
 			roundPayout = theBid * 8;
 		} else {
+			System.out.println("zero payout");
 			roundPayout = 0;
 		}
 		

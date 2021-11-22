@@ -102,6 +102,10 @@ public class Server{
 					    	
 					    	BaccaratInfo returnObj = new BaccaratInfo(newGame.playerHandInt(), newGame.playerHandInt(), newGame.getRoundPayout(), newGame.getWalletTotal(), newGame.getWinner() );
 					    	
+					    	System.out.println(newGame.getChoice());
+					    	System.out.println(newGame.getRoundPayout());
+					    	System.out.println(newGame.getWalletTotal());
+					    	System.out.println(newGame.getWinner());
 					    	out.writeObject(returnObj);
 					    	
 					    	}
