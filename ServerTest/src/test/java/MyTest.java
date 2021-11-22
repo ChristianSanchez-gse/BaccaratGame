@@ -26,9 +26,9 @@ class MyTest {
 		card1 = new Card("Spade", 8);
 		
     	theDealer = new BaccaratDealer();
-    	game1 = new BaccaratGame(5, "Banker", 20, "Andrew");
-    	game2 = new BaccaratGame(5, "Player", 20, "Andrew");
-    	game3 = new BaccaratGame(5, "Tie", 20, "Andrew");
+    	game1 = new BaccaratGame(5, "Banker", 20);
+    	game2 = new BaccaratGame(5, "Player", 20);
+    	game3 = new BaccaratGame(5, "Tie", 20);
 		
 	}
 	
