@@ -5,7 +5,7 @@ public class BaccaratGame {
 	// What gets passed in
 	public double theBid;
 	public String bidChoice;
-	private String name;
+
 	
 	// What we return
 	private ArrayList<Card> playerHand;
@@ -34,7 +34,7 @@ public class BaccaratGame {
 		this.theBid = theBid;
 		this.bidChoice = choice;
 		this.walletTotal = walletTotal;
-		this.name = name;
+
 		
 		
 		

@@ -12,7 +12,7 @@ public class BaccaratInfo implements Serializable{
 	// What gets passed in
 	public double theBid;
 	private String bidChoice;
-	private String name;
+
 	
 	// What we return
 	private ArrayList<Integer> playerHand;
@@ -21,13 +21,12 @@ public class BaccaratInfo implements Serializable{
 	public double walletTotal;
 	private String winner;
 	
-	BaccaratInfo(ArrayList<Integer> playerHand, ArrayList<Integer> bankerHand, double roundPayout, double walletTotal, String winner, String name) {
+	BaccaratInfo(ArrayList<Integer> playerHand, ArrayList<Integer> bankerHand, double roundPayout, double walletTotal, String winner) {
 		this.playerHand = playerHand;
 		this.bankerHand = bankerHand;
 		this.roundPayout = roundPayout;
 		this.walletTotal = walletTotal;
 		this.winner = winner;
-		this.name = name;
 	}
 	
 
@@ -76,12 +75,7 @@ public class BaccaratInfo implements Serializable{
 		this.winner = win;
 	}
 	
-	public String getName() {
-		return this.name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public double getBid() {
 		return this.theBid;
 	}
