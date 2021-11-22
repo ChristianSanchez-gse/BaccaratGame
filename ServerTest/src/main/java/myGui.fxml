@@ -64,7 +64,7 @@
                            <left>
                               <VBox prefHeight="400.0" prefWidth="140.0" spacing="60.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Server" wrappingWidth="99.33673286437988">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="99.33673286437988">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -84,10 +84,6 @@
                               <VBox prefHeight="379.0" prefWidth="102.0" spacing="50.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <HBox alignment="TOP_CENTER" prefHeight="32.0" prefWidth="309.0" spacing="20.0">
-                                       <children>
-                                          <Button id="onButton" mnemonicParsing="false" text="On" />
-                                          <Button id="offButton" mnemonicParsing="false" text="Off" />
-                                       </children>
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
