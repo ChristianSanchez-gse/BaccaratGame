@@ -82,7 +82,7 @@ public class myClientController {
 	}
 	public void sendTie(ActionEvent event) throws IOException{
 		String bid = tieBidField.getText();
-		BaccaratInfo obj = new BaccaratInfo("Tie", Integer.parseInt(bid));
+		BaccaratInfo obj = new BaccaratInfo("Draw", Integer.parseInt(bid));
 		bankerBidField.setDisable(true);
 		playerBidField.setDisable(true);
 		bankerBidButton.setDisable(true);

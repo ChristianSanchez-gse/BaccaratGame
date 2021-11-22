@@ -95,7 +95,9 @@ public class Server{
 				 while(true) {
 					    try {
 					    	BaccaratInfo data = (BaccaratInfo) in.readObject();
-					    	callback.accept("client: " + count + " sent: " + data.getBid());
+					    	BaccaratGame newGame = new BaccaratGame(data.getBid(), data.getChoice(), data.getWalletTotal());
+					    	String winner = newGame.getWinner();
+					    	callback.accept("client: " + count + " sent: " + data.getBid() + " for " + data.getChoice() + "......" + winner + " won!");
 					    	updateClients("client #"+count+" said: "+data);
 					    	
 					    	}

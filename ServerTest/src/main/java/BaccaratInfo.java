@@ -11,7 +11,7 @@ public class BaccaratInfo implements Serializable{
 
 	// What gets passed in
 	public double theBid;
-	private String bidChoice;
+	private String choice;
 
 	
 	// What we return
@@ -34,7 +34,7 @@ public class BaccaratInfo implements Serializable{
 	public BaccaratInfo(String choice, double bid) {
 		// TODO Auto-generated constructor stub
 		this.theBid = bid;
-		this.bidChoice = choice;
+		this.choice = choice;
 	}
 
 
@@ -78,6 +78,9 @@ public class BaccaratInfo implements Serializable{
 
 	public double getBid() {
 		return this.theBid;
+	}
+	public String getChoice() {
+		return this.choice;
 	}
 	
 	
