@@ -22,6 +22,8 @@ public class myServerController {
 	private ListView<String> gameHistory;
 	@FXML
 	private Button toggleServer;
+	@FXML
+	private Button testButton;
 	// Gui
 	private Stage stage;
 	private Scene scene;
@@ -35,14 +37,15 @@ public class myServerController {
 	public void openPort(int portInput) {
 		System.out.println("You hit the submit button");
 		// Setting up the server
+		//gameHistory = new ListView<String>();
 		
 		System.out.println(portInput);
 		//gameHistory = new ListView<String>();
 		serverConnection = new Server(data -> {
 			Platform.runLater(()->{
 				//System.out.println(data + " Was received");
-				System.out.println(data.toString());
-				//gameHistory.getItems().add("test");
+				//System.out.println(data.toString());
+				addToList();
 				//addToList(data.toString());
 			});
 		}, portInput);
@@ -54,26 +57,25 @@ public class myServerController {
 		String portInput = portNumber.getText();
 		System.out.println("Switched to the second setup scene");
 		
-		 
+		
 		// opens the new fxml window
 		newRoot = FXMLLoader.load(getClass().getResource("secondScreen.fxml"));
 		scene = new Scene(newRoot, 840,545);
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
-		openPort(Integer.parseInt(portInput));
 		
+		openPort(Integer.parseInt(portInput));
 		
 	}
 	
-	public void addToList(String string){
-		System.out.println("We are about to print to the listview" + string);
-		if (string != null) {
-			gameHistory = new ListView<String>();
-			gameHistory.getItems().add(string);
-		} else {
-			
-		}
+	public void addToList(){
+		System.out.println("We are about to print to the listview");
+			if(gameHistory == null) {
+				gameHistory = new ListView<String>();
+			} else {
+			gameHistory.getItems().add("Test");
+			}
 	}
 
 }

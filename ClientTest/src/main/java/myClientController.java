@@ -15,27 +15,9 @@ import javafx.stage.Stage;
 
 public class myClientController {
 	@FXML
-	private Button enterButton;
-	@FXML
 	private TextField ipText;
 	@FXML
 	private TextField portText;
-	@FXML
-	private TextField playerBidField;
-	@FXML
-	private TextField bankerBidField;
-	@FXML
-	private TextField tieBidField;
-	@FXML
-	private Button playerBidButton;
-	@FXML
-	private Button bankerBidButton;
-	@FXML
-	private Button tieBidButton;
-	@FXML
-	private Button newRound;
-	@FXML
-	private Label title;
 
 	
 	private static Client clientConnection;
@@ -45,67 +27,35 @@ public class myClientController {
 	
 	public void startClient(ActionEvent event) throws IOException{
 				System.out.println("It should switch the scene now");
-				
+				 
 				 
 				 System.out.println("Starting the client....");
 					int portNumber = Integer.parseInt(portText.getText());
 					String ip = ipText.getText();
-					clientConnection = new Client(data->{
-					Platform.runLater(()->{
-						//System.out.println(data);
-						title.setText(data.toString());
-						});
-					}, portNumber, ip);
-					clientConnection.start();
+//					//title = new Label();
+//					clientConnection = new Client(data->{
+//					Platform.runLater(()->{
+//						System.out.println(data);
+//						title.setText(data.toString());
+//						});
+//					}, portNumber, ip);
+//					clientConnection.start();
 					
 					
 					
-					 newRoot = FXMLLoader.load(getClass().getResource("inGameGui.fxml"));
+					 
+					 FXMLLoader a = new FXMLLoader(getClass().getResource("inGameGui.fxml"));
+					 newRoot = a.load();
+					 myControllerTwo b = a.getController();
+					 b.port = portNumber;
+					 b.ip = ip;
+					 b.startClient();
 					 inGameScene = new Scene(newRoot, 840,545);
 					 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 					 stage.setScene(inGameScene);
 					 stage.show();
 	}
-	public void sendPlayer(ActionEvent event) throws IOException{
-		
-		String bid = playerBidField.getText();
-		BaccaratInfo obj = new BaccaratInfo("Player", Integer.parseInt(bid));
-		bankerBidField.setDisable(true);
-		tieBidField.setDisable(true);
-		bankerBidButton.setDisable(true);
-		tieBidButton.setDisable(true);
-		clientConnection.send(obj);
-	}
-	public void sendBanker(ActionEvent event) throws IOException{
-		String bid = bankerBidField.getText();
-		BaccaratInfo obj = new BaccaratInfo("Banker", Integer.parseInt(bid));
-		playerBidField.setDisable(true);
-		tieBidField.setDisable(true);
-		playerBidButton.setDisable(true);
-		tieBidButton.setDisable(true);
-		clientConnection.send(obj);
-	}
-	public void sendTie(ActionEvent event) throws IOException{
-		String bid = tieBidField.getText();
-		BaccaratInfo obj = new BaccaratInfo("Draw", Integer.parseInt(bid));
-		bankerBidField.setDisable(true);
-		playerBidField.setDisable(true);
-		bankerBidButton.setDisable(true);
-		playerBidButton.setDisable(true);
-		clientConnection.send(obj);
-	}
 	
-	public void newRound(ActionEvent event) throws IOException{
-		bankerBidField.setDisable(false);
-		playerBidField.setDisable(false);
-		bankerBidButton.setDisable(false);
-		playerBidButton.setDisable(false);
-		tieBidButton.setDisable(false);
-		tieBidField.setDisable(false);
-		bankerBidField.setText(null);
-		playerBidField.setText(null);
-		tieBidField.setText(null);
-	}
 	
 //	public void sendTestObject() {
 //		//BaccaratInfo obj = new BaccaratInfo(20,30,45, "chris");
