@@ -24,7 +24,7 @@ public class BaccaratGame {
 	
 	// getting the starting values passed so we can play the game.
 	// Creating a new dealer object in order to get the randomized cards.
-	BaccaratGame(double theBid,  String choice, double walletTotal, String name){
+	BaccaratGame(double theBid,  String choice, double walletTotal){
 //		this.playerHand = new ArrayList<Card>();
 //		this.bankerHand = new ArrayList<Card>();
 		
