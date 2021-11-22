@@ -40,7 +40,7 @@ public class SecondScreenController implements Initializable{
 			Platform.runLater(()->{
 				//System.out.println(data + " Was received");
 				//System.out.println(data.toString());
-				addToList(data.toString());
+				gameHistory.getItems().add(data.toString());
 			});
 		}, port);
 	}

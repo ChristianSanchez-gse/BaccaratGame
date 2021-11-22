@@ -29,17 +29,16 @@ public class myServerController {
 		String portInput = portNumber.getText();
 		System.out.println("Switched to the second setup scene");
 		
-		FXMLLoader a = new FXMLLoader(getClass().getResource("inGameGui.fxml"));
+		FXMLLoader a = new FXMLLoader(getClass().getResource("secondScreen.fxml"));
 		 newRoot = a.load();
 		 SecondScreenController b = a.getController();
 		 b.port = Integer.parseInt(portInput);
 		 b.startServer();
 		// opens the new fxml window
-		newRoot = FXMLLoader.load(getClass().getResource("secondScreen.fxml"));
-		scene = new Scene(newRoot, 840,545);
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
+		 scene = new Scene(newRoot, 840,545);
+		 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		 stage.setScene(scene);
+		 stage.show();
 		
 	}
 
