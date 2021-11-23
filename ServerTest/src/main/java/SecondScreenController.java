@@ -38,8 +38,6 @@ public class SecondScreenController implements Initializable{
 	public void startServer() {
 		serverConnection = new Server(data -> {
 			Platform.runLater(()->{
-				//System.out.println(data + " Was received");
-				//System.out.println(data.toString());
 				gameHistory.getItems().add(data.toString());
 			});
 		}, port);

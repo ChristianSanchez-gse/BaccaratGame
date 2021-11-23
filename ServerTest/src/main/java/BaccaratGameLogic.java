@@ -20,9 +20,6 @@ public class BaccaratGameLogic {
 		} else{
 			return "Draw";
 		}
-		
-
-		
 	}
 	// value of the 2 cards added together
 	public static int handTotal(ArrayList<Card> hand) {

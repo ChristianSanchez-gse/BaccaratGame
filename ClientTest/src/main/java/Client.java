@@ -40,9 +40,6 @@ public class Client extends Thread{
 			BaccaratInfo message = (BaccaratInfo) in.readObject();
 			System.out.println("Passing the object back to the controller. Winner: " + message.getWinner());
 			callback.accept(message);
-			//callback.accept(message.getBid() + " was the bid");
-			//callback.accept(message.getWalletTotal() + " was the walletTotal");
-			//callback.accept(message.getRoundPayout() + " was the round payout");
 			
 			}
 			catch(Exception e) {}

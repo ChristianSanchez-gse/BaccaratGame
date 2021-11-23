@@ -53,8 +53,6 @@ public class Server{
 					callback.accept("Server socket did not launch");
 				}
 			}//end of while
-
-		
 		}
 	
 

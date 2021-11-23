@@ -58,19 +58,10 @@ public class myControllerTwo implements Initializable{
 	}
 	public void startClient() {
 		 System.out.println("Starting the client....");
-			//int portNumber = Integer.parseInt(portText.getText());
-			//String ip = ipText.getText();
-			//title = new Label();
 			clientConnection = new Client(data->{
 			Platform.runLater(()->{
-				//System.out.println(data);
-				//title.setText(data.toString());
 				System.out.println(data);
 				processIncomingData(data);
-				//walletTotal.setText(data.toString());
-
-
-				
 				});
 			}, port, ip);
 			clientConnection.start();
@@ -87,14 +78,6 @@ private void processIncomingData(Serializable data) {
 		roundEarnings.setText("Round earnings: $" + obj.getRoundPayout());
 		walletTotal.setText("" + obj.getWalletTotal());
 		printCards(obj.getPlayerHand(),obj.getBankerHand());
-		/*
-		if( obj.getChoice().equals(obj.getWinner())){
-			endGameText.setText("The winner is: " + obj.getWinner() + "... congratulations, you won");
-		} else {
-			endGameText.setText("The winner is: " + obj.getWinner()+ "... sorry, you lost :(");
-		}
-		*/
-		
 	}
 public void sendPlayer(ActionEvent event) throws IOException{
 		

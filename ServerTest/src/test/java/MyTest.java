@@ -150,6 +150,7 @@ class MyTest {
 	
 	@Test
 	void BaccaratGameHandSize() {
+		game1.playGame();
 		if (game1.bankerHand().size() == 2) {
 			assertEquals(2, game1.bankerHand().size(), "wrong value");
 		}else {
@@ -160,10 +161,11 @@ class MyTest {
 	
 	@Test
 	void BaccaratGameHandSize2() {
-		if (game1.bankerHandInt().size() < 3) {
-			assertEquals(2, game1.bankerHandInt().size(), "wrong value");
+		game1.playGame();
+		if (game1.bankerHand().size() < 3) {
+			assertEquals(2, game1.bankerHand().size(), "wrong value");
 		}else {
-			assertEquals(3, game1.bankerHandInt().size(), "wrong value");
+			assertEquals(3, game1.bankerHand().size(), "wrong value");
 		}
 		
 	}
@@ -171,9 +173,9 @@ class MyTest {
 	@Test
 	void BaccaratGameHandSize3() {
 		if (game3.bankerHandInt().size() < 3) {
-			assertEquals(2, game1.bankerHandInt().size(), "wrong value");
+			assertEquals(2, game1.bankerHand().size(), "wrong value");
 		}else {
-			assertEquals(3, game1.bankerHandInt().size(), "wrong value");
+			assertEquals(3, game1.bankerHand().size(), "wrong value");
 		}
 		
 	}
