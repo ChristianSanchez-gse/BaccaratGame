@@ -31,10 +31,11 @@ public class BaccaratInfo implements Serializable{
 	
 
 	
-	public BaccaratInfo(String choice, double bid) {
+	public BaccaratInfo(String choice, double bid, double wallet) {
 		// TODO Auto-generated constructor stub
 		this.theBid = bid;
 		this.choice = choice;
+		this.walletTotal = wallet;
 	}
 
 

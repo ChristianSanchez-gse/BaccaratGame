@@ -80,12 +80,15 @@ public class BaccaratGame {
 			roundPayout = 0;
 		}
 		
-		
+		System.out.println("The payout is: " + roundPayout);
+		System.out.println("The current wallet is: " + walletTotal);
+		System.out.println("The bid is: " + theBid);
 		if (roundPayout == 0) {
 			walletTotal = walletTotal - theBid;
 		} else {
 			walletTotal = walletTotal + roundPayout;
 		}
+		System.out.println("The new wallet is: " + walletTotal);
 //		theInfo.setRoundPayout(this.roundPayout);
 //		theInfo.setWalletTotal(this.walletTotal);
 //		theInfo.setWinner(this.winner);
@@ -160,6 +163,7 @@ public class BaccaratGame {
 	}
 	
 	public double getWalletTotal() {
+		System.out.println("Something called getWalletTotal..... this is what we return: " + walletTotal);
 		return this.walletTotal;
 	}
 	

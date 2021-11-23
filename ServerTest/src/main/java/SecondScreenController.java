@@ -43,8 +43,11 @@ public class SecondScreenController implements Initializable{
 				gameHistory.getItems().add(data.toString());
 			});
 		}, port);
+		
+		
 	}
 	public void stopServer() {
-		
+		gameHistory.getItems().add("----Shutting down server----");
+		serverConnection = null;
 	}
 }
