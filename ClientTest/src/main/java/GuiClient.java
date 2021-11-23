@@ -40,7 +40,7 @@ public class GuiClient extends Application{
 		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("clientGui.fxml"));
-			startScene = new Scene(root, 840,545);
+			startScene = new Scene(root, 650,400);
 
 			}
 			catch(Exception e) {

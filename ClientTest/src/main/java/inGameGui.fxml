@@ -63,7 +63,7 @@
                </font>
             </Label>
             <Label layoutX="225.0" layoutY="245.0" text="To start a new round, press bid again" />
-            <Button layoutX="590.0" layoutY="14.0" mnemonicParsing="false" text="EXIT" />
+            <Button fx:id="exitButton" layoutX="590.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeGame" text="EXIT" />
             <Button fx:id="bankerBidButton" layoutX="150.0" layoutY="359.0" mnemonicParsing="false" onAction="#sendBanker" text="Bid" />
             <Button fx:id="tieBidButton" layoutX="266.0" layoutY="359.0" mnemonicParsing="false" onAction="#sendTie" text="Bid" />
             <Button fx:id="newRound" layoutX="565.0" layoutY="334.0" mnemonicParsing="false" onAction="#newRound" text="New Round" />

@@ -50,7 +50,7 @@ public class myClientController {
 					 b.port = portNumber;
 					 b.ip = ip;
 					 b.startClient();
-					 inGameScene = new Scene(newRoot, 840,545);
+					 inGameScene = new Scene(newRoot, 650,400);
 					 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 					 stage.setScene(inGameScene);
 					 stage.show();

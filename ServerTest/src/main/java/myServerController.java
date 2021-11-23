@@ -35,7 +35,7 @@ public class myServerController {
 		 b.port = Integer.parseInt(portInput);
 		 b.startServer();
 		// opens the new fxml window
-		 scene = new Scene(newRoot, 840,545);
+		 scene = new Scene(newRoot, 700,545);
 		 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		 stage.setScene(scene);
 		 stage.show();

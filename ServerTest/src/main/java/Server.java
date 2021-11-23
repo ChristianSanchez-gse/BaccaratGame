@@ -100,6 +100,7 @@ public class Server{
 					    	BaccaratInfo data = (BaccaratInfo) in.readObject();
 					    	System.out.println("THE WALLET TOTAL RECIEVED TO THE SERVER IS: " + data.getWalletTotal());
 					    	BaccaratGame newGame = new BaccaratGame(data.getBid(), data.getChoice(), data.getWalletTotal());
+					    	newGame.playGame();
 					    	callback.accept("Client " + count + ": Bet amount: " + data.getBid() + " on " + data.getChoice());
 					    	callback.accept(": Winner for this round is " + newGame.getWinner());
 					    	

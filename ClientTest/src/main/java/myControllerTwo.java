@@ -3,6 +3,7 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
@@ -47,6 +48,8 @@ public class myControllerTwo implements Initializable{
 	private Label walletTotal;
 	
 	@FXML Label playerCard1, playerCard2, playerCard3, playerTotal, bankerCard1,bankerCard2, bankerCard3, bankerTotal;
+	@FXML
+	private Button exitButton;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -83,7 +86,7 @@ private void processIncomingData(Serializable data) {
 		endGameText.setFill(Color.GREEN);
 		roundEarnings.setText("Round earnings: $" + obj.getRoundPayout());
 		walletTotal.setText("" + obj.getWalletTotal());
-		
+		printCards(obj.getPlayerHand(),obj.getBankerHand());
 		/*
 		if( obj.getChoice().equals(obj.getWinner())){
 			endGameText.setText("The winner is: " + obj.getWinner() + "... congratulations, you won");
@@ -101,6 +104,7 @@ public void sendPlayer(ActionEvent event) throws IOException{
 		BaccaratInfo obj = new BaccaratInfo("Player", Double.parseDouble(bid), Double.parseDouble(wallet));
 		bankerBidField.setDisable(true);
 		tieBidField.setDisable(true);
+		playerBidButton.setDisable(true);
 		bankerBidButton.setDisable(true);
 		tieBidButton.setDisable(true);
 		clientConnection.send(obj);
@@ -113,6 +117,7 @@ public void sendPlayer(ActionEvent event) throws IOException{
 		tieBidField.setDisable(true);
 		playerBidButton.setDisable(true);
 		tieBidButton.setDisable(true);
+		bankerBidButton.setDisable(true);
 		clientConnection.send(obj);
 	}
 	public void sendTie(ActionEvent event) throws IOException{
@@ -123,6 +128,7 @@ public void sendPlayer(ActionEvent event) throws IOException{
 		playerBidField.setDisable(true);
 		bankerBidButton.setDisable(true);
 		playerBidButton.setDisable(true);
+		tieBidButton.setDisable(true);
 		clientConnection.send(obj);
 	}
 	
@@ -139,6 +145,10 @@ public void sendPlayer(ActionEvent event) throws IOException{
 		roundEarnings.setText(null);
 		endGameText.setText(null);
 		
+	}
+	
+	public void closeGame() {
+		System.exit(0);
 	}
 	
 	public void printCards(ArrayList<Integer> playerHand, ArrayList<Integer> bankerHand) {
@@ -174,28 +184,27 @@ public void sendPlayer(ActionEvent event) throws IOException{
         }else {
             bCard3 = null;
         }
-//        System.out.println("players first two " + first2player);
-//        System.out.println("bankers first two "  + first2banker);
-        playerCard1.setText(pCard1);
-        playerCard2.setText(pCard2);
-        bankerCard1.setText(bCard1);
-        bankerCard2.setText(bCard2);
+
+        playerCard1.setText("Card 1: " + pCard1);
+        playerCard2.setText("Card 2: " + pCard2);
+        bankerCard1.setText("Card 1: " +bCard1);
+        bankerCard2.setText("Card 2: " +bCard2);
         pause.play(); // pause for a few
-        if (playerHand.size() == 3) {
-//            System.out.println("players third " + player3);
-            playerCard3.setText(pCard3);
+        if (pCard3 != null) {
+
+            playerCard3.setText("Card 3: " + pCard3);
             pause.play(); // pause for a few
 
         }
-        if (bankerHand.size() == 3) {
-//            System.out.println("bankers third " + banker3);
-            bankerCard3.setText(bCard3);
+        if (bCard3 != null) {
+
+            bankerCard3.setText("Card 3: " + bCard3);
             pause.play();// pause for a few
 
         }
 
-        playerTotal.setText(String.valueOf(pTotal));
-        bankerTotal.setText(String.valueOf(bTotal));
+        playerTotal.setText("Total: " + String.valueOf(pTotal));
+        bankerTotal.setText("Total: " + String.valueOf(bTotal));
 
     }
     
